@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {monthlyTrends} from '../dist/analytics.mjs';
+const ts=[{transaction_id:'1',type:'Hire',department:'A',effective_date:'2026-01-01'},{transaction_id:'2',type:'Hire',department:'A',effective_date:'2026-01-02'},{transaction_id:'3',type:'Leave',department:'B',effective_date:'2026-02-01'}];
+const os=[{transaction_id:'1',rule_id:'R1',status:'exception'},{transaction_id:'1',rule_id:'R2',status:'exception'},{transaction_id:'2',rule_id:'R1',status:'unknown'},{transaction_id:'3',rule_id:'R2',status:'pass'}];
+test('trend counts unique transactions and does not turn evidence gaps into exceptions',()=>{assert.deepEqual(monthlyTrends(ts,os)[0],{m:'2026-01',total:2,bad:1,unknown:1,rate:50})});
+test('rule, team and process filters use only applicable transactions',()=>{const p=monthlyTrends(ts,os,{rule:'R1',team:'A',process:'Hire'});assert.equal(p.length,1);assert.equal(p[0].total,2);assert.equal(p[0].rate,50);assert.equal(monthlyTrends(ts,os,{team:'Z'}).length,0);assert.equal(monthlyTrends(ts,os,{rule:'R1',process:'Leave'})[0].total,0)});

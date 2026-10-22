@@ -1,0 +1,12 @@
+node_modules/
+output/
+qa-output/
+*.tar.gz
+.DS_Store
+
+dist/server/
+dist/.openai/
+.local-data/
+tmp/
+
+.submission-local-only/

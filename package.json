@@ -1,0 +1,16 @@
+{
+  "name": "aeris-hr-assurance",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Synthetic HR compliance prototype with deterministic policy checking and human review",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check dist/app.js && node --check dist/engine.mjs && node --check server.mjs && node --check worker/api.mjs && node --check cli.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

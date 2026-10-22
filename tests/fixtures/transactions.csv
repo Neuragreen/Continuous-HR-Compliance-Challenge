@@ -1,0 +1,3 @@
+transaction_id,employee_id,type,grade,department,amount,effective_date,requester,approver,approver_role,submitted_at,approved_at,documents
+TEST-001,E1,Allowance,6,Engineering,7500,2026-09-15,U1,U1,Team lead,2026-09-01,2026-09-10,Allowance approval
+TEST-002,E1,Allowance,6,Engineering,4000,2026-09-15,U1,U2,Team lead,2026-09-01,2026-09-10,Allowance approval
